@@ -31,6 +31,13 @@ sudo flatpak override --filesystem=/usr/share/icons
 sudo flatpak override --env=GTK_THEME=Magnetic-Teal-Dark-Compact
 sudo flatpak override --env=ICON_THEME=Flat-Remix-Black-Light-darkPanel
 
+echo  "SETTING UP ZSH THEMEING"
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k 
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+chsh -s $(which zsh)
+sudo systemctl enable sddm.service
+sudo update-alternatives --config default-displaymanager
